@@ -34,18 +34,15 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Magic Shop</h1>
+    <h1>Shopping Cart</h1>
 </div>
 
 <div class="container">
-    <div id="product-category" class="card">
-        <strong th:text="${category.name}">Category Title</strong>
-    </div>
 
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
             <div class="card">
-                <div class="image-container"><img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt="" /></div>
+                <div class="image-container"><img class="" src="http://placehold.it/400x250/000/fff" th:attr="src='/static/img/product_' + ${prod.id+6} + '.jpg'" alt="" /></div>
                 <div class="card-header">
                     <h4 class="card-title" th:text="${prod.name}">Product name</h4>
                     <p class="card-text" th:text="${prod.description}">Product description... </p>
@@ -55,7 +52,7 @@
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-success" href="#">Add to cart</a>
+                        <a class="btn btn-success" href="#">Remove from Cart</a>
                     </div>
                 </div>
             </div>
