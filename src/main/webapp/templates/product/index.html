@@ -38,6 +38,17 @@
 </div>
 
 <div class="container">
+    <form action="/" method="get">
+        <select name="category" >
+            <option value="1">Spells</option>
+            <option value="3">Potions</option>
+            <option value="2">Poisons</option>
+            <option value="4">Scrolls</option>
+            <option value="5">Weapon</option>
+            <option value="6">Armor</option>
+        </select>
+        <input type="submit" value="Filter">
+    </form>
     <div id="product-category" class="card">
         <strong th:text="${category.name}">Category Title</strong>
     </div>
