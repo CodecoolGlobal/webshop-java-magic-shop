@@ -1,3 +1,8 @@
+body {
+    background-image: url("/static/img/background.jpg");
+    font-family: 'Allura', cursive;
+}
+
 .glyphicon {
     margin-right:5px;
 }
@@ -59,4 +64,25 @@
 .list-group-item-text
 {
     margin: 0 0 11px;
+}
+
+#footer {
+    margin-top: 10%;
+    background: darkgrey;
+    position: sticky;
+    bottom: 0;
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+.text-center {
+    padding: 1rem 1rem;
+}
+
+#product-category {
+    text-align: center;
+    font-size: 2rem;
+    letter-spacing: 5px;
 }

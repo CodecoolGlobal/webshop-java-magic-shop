@@ -25,17 +25,20 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- End of Bootstrap components -->
 
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
 </head>
 
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Codecool Shop</h1>
+    <h1>Magic Shop</h1>
 </div>
 
 <div class="container">
-    <div class="card">
+    <div id="product-category" class="card">
         <strong th:text="${category.name}">Category Title</strong>
     </div>
 
