@@ -48,8 +48,24 @@ public class Initializer implements ServletContextListener {
 
 
         //setting up products and printing it
-        productDataStore.add(new Product("Amazon Fire", 49.9f, "USD", "Fantastic price. Large content ecosystem. Good parental controls. Helpful technical support.", potion, amazon));
-        productDataStore.add(new Product("Lenovo IdeaPad Miix 700", 479, "USD", "Keyboard cover is included. Fanless Core m5 processor. Full-size USB ports. Adjustable kickstand.", spell, lenovo));
-        productDataStore.add(new Product("Amazon Fire HD 8", 89, "USD", "Amazon's latest Fire HD 8 tablet is a great value for media consumption.", spell, amazon));
+        productDataStore.add(new Product("Elixir of Life", 49.9f, "USD", "Awful smell, worse taste, but it can save a life.", potion, amazon));
+        productDataStore.add(new Product("Invoker's Grimoire", 89, "USD", "Though ancient, it doesn't seems it has been used much.", book, amazon));
+        productDataStore.add(new Product("Circle of Protection", 479, "USD", "Handy for most wizards, crucial if a witchhunt is near.", spell, lenovo));
+        productDataStore.add(new Product("Blue Sky", 49.9f, "USD", "Legends say this drink makes one invisible, but since nobody has reverted it before, it may be that it just removes you from the world.", potion, amazon));
+        productDataStore.add(new Product("Emerald Dream", 49.9f, "USD", "A draught of serenity, this concoction can calm, and in some cases bring sleep to one who's able to keep it down..", potion, amazon));
+        productDataStore.add(new Product("White Flame", 49.9f, "USD", "As the name suggests, this substance can burn or melt almost anything with spectacular white tongues of flame, as soon as in contact with something other than the enchanted bottle it's usually stored inside. .", poison, amazon));
+        productDataStore.add(new Product("On house-elves Part I, and II by Albus Dumbledore", 49.9f, "USD", "The famous wizard's books on the subject of house-elves and their history.", book, amazon));
+        productDataStore.add(new Product("Decrypt", 479, "USD", "A spell mostly used by witch hunters, or treasure seekers, it can reveal hidden meanings and messages lesser mages hide in their books, or other objects..", spell, lenovo));
+        productDataStore.add(new Product("Wild Arcane", 479, "USD", "A lunatic you are, if you attempt this sorcery, it is said to grant immortality, but most attempts result with the caster melted into a puddle.", spell, lenovo));
+        productDataStore.add(new Product("Hailstorm", 479, "USD", "Weather spells are quite rare, this one especially. The last time it was properly cast, it caused the Ice Age.", spell, lenovo));
+        productDataStore.add(new Product("Witch Hunter's shortsword", 479, "USD", "One of those famous weapons the members of the Order of the Witch Hunters use, it nullifies magic it comes into contact with.", weapon, lenovo));
+        productDataStore.add(new Product("Dwarven runeblade", 479, "USD", "One would think the runes carved into the blade of this fine weapon is some kind of spell. It's probably just an insult.", weapon, lenovo));
+        productDataStore.add(new Product("Bulwark of Reflection", 479, "USD", "This seemingly regular shield is said to reflect any projectiles it is struck with, be it of magical nature, or not.", armor, lenovo));
+        productDataStore.add(new Product("Mysterious Hammer", 479, "USD", "It may be the weapon of a god, or just a regular hammer made by the alley blacksmith..", weapon, lenovo));
+        productDataStore.add(new Product("Swirling Death", 49.9f, "USD", "The most lethal poison currently known to exist, it has no known cure, and a drop finishes off the victim in seconds. The recipe is lost, only a few bottles remain scattered around the world. .", poison, amazon));
+        productDataStore.add(new Product("Pyre of Doom", 479, "USD", "A devastating hex, invented by an insane warlock whose name is now long forgotten, in contradiction with his creation..", spell, lenovo));
+        productDataStore.add(new Product("Rider of the Storm", 49.9f, "USD", "A concoction that allows the user to travel through storm clouds in the form of ball lightning, it's consifered safe by most madmen..", potion, amazon));
+        productDataStore.add(new Product("Reptile's Saliva", 49.9f, "USD", "A destructive acid, hardly contained in anything for long.", poison, amazon));
+
     }
 }
