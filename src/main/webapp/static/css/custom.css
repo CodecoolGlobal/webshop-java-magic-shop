@@ -103,6 +103,19 @@ img {
 .image-container {
     min-height: 280px;
 }
+
+.image-container {
+    min-height: 280px;
+}
+
+.card-header {
+    min-height: 150px;
+}
+
+.col {
+    margin-bottom: 2%;
+}
+
 .dropbtn {
     background-color: darkgrey;
     color: black;
