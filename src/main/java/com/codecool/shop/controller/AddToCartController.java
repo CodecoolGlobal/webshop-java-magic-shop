@@ -22,6 +22,21 @@ public class AddToCartController extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("cartButton"));
         Product chosenProduct = productDataStore.find(id);
 
+        Cart cart = Cart.getInstance();
+        LineItem chosen = null;
+        for (LineItem lineItem: cart.productsInCart) {
+            if (lineItem.product == chosenProduct) {
+                chosen = lineItem;
+            }
+        }
+        if (chosen == null) {
+            chosen = new LineItem(chosenProduct, 1);
+        }
+
+
+        cart.addToCart(chosen);
+
+
 
 
         resp.sendRedirect("/");
