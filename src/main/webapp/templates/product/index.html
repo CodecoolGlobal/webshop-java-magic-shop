@@ -42,14 +42,22 @@
 <div class="text-wrapper">
     <div class="container">
         <div class="dropdown">
-            <button onclick="dropdown()" class="dropbtn">Choose a Category</button>
-            <div id="myDropdown" class="dropdown-content">
+            <button onclick="categoryDropdown()" class="dropbtn">Choose a Category</button>
+            <div id="categoryDropdown" class="dropdown-content">
                 <a href="/?category=1">Spells</a>
                 <a href="/?category=3">Potions</a>
                 <a href="/?category=2">Poisons</a>
                 <a href="/?category=4">Books</a>
                 <a href="/?category=5">Weapons</a>
                 <a href="/?category=6">Armors</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <button onclick="supplierDropdown()" class="dropbtn">Choose a Supplier</button>
+            <div id="supplierDropdown" class="dropdown-content">
+                <a href="/?supplier=1">Khajiit Caravans</a>
+                <a href="/?supplier=2">Thaler</a>
+                <a href="/?supplier=3">Consortium</a>
             </div>
         </div>
     </div>
