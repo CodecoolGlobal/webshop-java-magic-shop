@@ -23,18 +23,20 @@ public class AddToCartController extends HttpServlet {
         Product chosenProduct = productDataStore.find(id);
 
         Cart cart = Cart.getInstance();
-        LineItem chosen = null;
+        boolean contains = false;
+
         for (LineItem lineItem: cart.productsInCart) {
             if (lineItem.product == chosenProduct) {
-                chosen = lineItem;
+                contains = true;
+                lineItem.quantity ++;
             }
         }
-        if (chosen == null) {
-            chosen = new LineItem(chosenProduct, 1);
+        if (!contains) {
+            LineItem chosen = new LineItem(chosenProduct, 1);
+            cart.addToCart(chosen);
         }
 
 
-        cart.addToCart(chosen);
 
 
 

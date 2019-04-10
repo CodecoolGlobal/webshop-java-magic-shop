@@ -31,10 +31,6 @@ public class Cart {
     }
 
     public void addToCart(LineItem item) {
-        if (productsInCart.contains(item)) {
-            item.quantity++;
-        } else {
             productsInCart.add(item);
-        }
     }
 }
