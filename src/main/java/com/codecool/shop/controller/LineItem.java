@@ -13,4 +13,8 @@ public class LineItem {
         this.quantity = quantity;
         this.addUpPrice = product.getDefaultPrice()*quantity;
     }
+
+    public Product getProduct() {
+        return product;
+    }
 }

@@ -17,7 +17,7 @@ public class CheckoutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Cart currentCart = new Cart();
+        Cart currentCart = Cart.getInstance();
         Order currentOrder = new Order(currentCart.productsInCart);
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
