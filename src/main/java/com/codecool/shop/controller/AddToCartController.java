@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/cart/add"})
@@ -17,28 +18,26 @@ public class AddToCartController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         ProductDao productDataStore = ProductDaoMem.getInstance();
 
         int id = Integer.parseInt(req.getParameter("cartButton"));
         Product chosenProduct = productDataStore.find(id);
 
-        Cart cart = Cart.getInstance();
+        Cart cart = (Cart) getServletContext().getAttribute("cart");
+
         boolean contains = false;
 
-        for (LineItem lineItem: cart.productsInCart) {
+        for (LineItem lineItem : cart.productsInCart) {
             if (lineItem.product == chosenProduct) {
                 contains = true;
-                lineItem.quantity ++;
+                lineItem.quantity++;
             }
         }
         if (!contains) {
             LineItem chosen = new LineItem(chosenProduct, 1);
             cart.addToCart(chosen);
         }
-
-
-
-
 
 
         resp.sendRedirect("/");

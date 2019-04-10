@@ -10,8 +10,8 @@
     <packaging>war</packaging>
 
     <properties>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <jetty.version>9.4.12.v20180830</jetty.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jetty.version>9.4.12.v20180830</jetty.version>
     </properties>
 
     <build>
@@ -69,5 +69,11 @@
             <artifactId>thymeleaf</artifactId>
             <version>3.0.9.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>nz.net.ultraq.thymeleaf</groupId>
+            <artifactId>thymeleaf-layout-dialect</artifactId>
+            <version>2.4.1</version>
+        </dependency>
+
     </dependencies>
 </project>

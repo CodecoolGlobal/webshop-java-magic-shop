@@ -1,5 +1,6 @@
 package com.codecool.shop.config;
 
+import com.codecool.shop.controller.Cart;
 import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.SupplierDao;
@@ -13,6 +14,7 @@ import com.codecool.shop.model.Supplier;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+import javax.servlet.http.HttpSession;
 
 @WebListener
 public class Initializer implements ServletContextListener {
@@ -39,7 +41,6 @@ public class Initializer implements ServletContextListener {
         ProductCategory book = new ProductCategory("Books", "Sorcery", "A document of wizardry, describing either a spell, curse, recipe, or anything related to magic.");
         ProductCategory weapon = new ProductCategory("Weapons", "Armament", "An enchanted or magical tool, mostly used by people for the intent of murder, dismemberment, crippling, or other form of vileness.");
         ProductCategory armor = new ProductCategory("Armors", "Armament", "A piece or set of gear, used for protection against one's acquaintance with intent not so pure..");
-
 
 
         productCategoryDataStore.add(spell);

@@ -4,6 +4,8 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
+
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ITemplateResolver;
@@ -26,6 +28,7 @@ public class ThymeleafConfig implements ServletContextListener {
     private TemplateEngine templateEngine(ServletContext servletContext) {
         TemplateEngine engine = new TemplateEngine();
         engine.setTemplateResolver(templateResolver(servletContext));
+        engine.addDialect(new LayoutDialect());
         return engine;
     }
 

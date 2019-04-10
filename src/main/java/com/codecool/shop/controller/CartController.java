@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/shopping-cart"})
@@ -16,12 +17,16 @@ public class CartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Cart currentCart = Cart.getInstance();
+        Cart currentCart = (Cart) getServletContext().getAttribute("cart");
 
-        TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
-        WebContext context = new WebContext(req, resp, req.getServletContext());
-        context.setVariable("products", currentCart.getProductsInCart());
-        engine.process("product/shopping-cart.html", context, resp.getWriter());
+        if (currentCart != null) {
+            TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
+            WebContext context = new WebContext(req, resp, req.getServletContext());
+            context.setVariable("products", currentCart.getProductsInCart());
+            engine.process("product/shopping-cart.html", context, resp.getWriter());
+        } else {
+            resp.sendRedirect("/");
+        }
     }
 }
 
