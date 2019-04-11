@@ -20,6 +20,7 @@ public class Cart {
     ArrayList<LineItem> productsInCart = new ArrayList<>();
 
     float sumOfCart = 0;
+    int itemsTotal = 0;
 
 
     public ArrayList<LineItem> getProductsInCart() {
@@ -28,6 +29,12 @@ public class Cart {
 
     public float getSumOfCart() {
         return sumOfCart;
+    }
+
+    public int getItemsTotal() { return itemsTotal; }
+
+    public void setItemsTotal(int increase) {
+        this.itemsTotal += increase;
     }
 
     public void addToCart(LineItem item) {

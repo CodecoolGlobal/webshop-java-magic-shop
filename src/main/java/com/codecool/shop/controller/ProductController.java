@@ -48,7 +48,7 @@ public class ProductController extends HttpServlet {
             session.setAttribute("lasturl","/?category="+req.getParameter("category"));
         }
 //        context.setVariables(params);
-        context.setVariable("recipient", "World");
+        context.setVariable("cartTotal", sessionCart.getItemsTotal());
         if (req.getParameter("supplier") != null) {
             supplierId = Integer.parseInt(req.getParameter("supplier"));
             session.setAttribute("lasturl","/?supplier="+req.getParameter("supplier"));
