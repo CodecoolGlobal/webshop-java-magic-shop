@@ -11,6 +11,8 @@ public class Order {
     private String phone;
     private String name;
     private String email;
+    private String method;
+    private String card_num;
 
     public Order(ArrayList<LineItem> itemList) {
         this.itemList = itemList;
@@ -20,6 +22,14 @@ public class Order {
     }
     public ArrayList<LineItem> getItemList(){
         return itemList;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
+    public void setCard_num(String card_num) {
+        this.card_num = card_num;
     }
 
     public void saveData(String billingAddress, String shoppingAdress, String phone, String name, String email) {
