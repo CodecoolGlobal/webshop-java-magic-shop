@@ -62,7 +62,10 @@
                         <p class="lead" th:text="'Quantity: ' + ${prod.getQuantity()}"></p>
                     </div>
                     <div class="card-text">
-                        <a class="btn btn-success" href="#">Remove from Cart</a>
+                        <form action='/cart/remove' method='post'>
+                            <button class="btn btn-success" type="submit" name="cartButton" th:value="${prod.getProduct().id}">Remove from Cart
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

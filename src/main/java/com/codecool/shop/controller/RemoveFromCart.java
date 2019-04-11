@@ -28,10 +28,10 @@ public class RemoveFromCart extends HttpServlet {
         Cart cart = (Cart) httpSession.getAttribute("cart");
         boolean contains = true;
 
-        for (LineItem lineItem : cart.productsInCart) {
-            if (lineItem.getProduct() == chosenProduct) {
+        for (int i=0; i< cart.productsInCart.size(); i++) {
+            if (cart.productsInCart.get(i).getProduct() == chosenProduct) {
                 contains = false;
-                cart.removeFromCart(lineItem);
+                cart.removeFromCart(cart.productsInCart.get(i));
             }
         }
 
