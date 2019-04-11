@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/cart/add"})
-public class AddToCartController extends HttpServlet {
+@WebServlet(urlPatterns = {"/cart/remove"})
+public class RemoveFromCart extends HttpServlet {
 
 
     @Override
@@ -26,21 +26,17 @@ public class AddToCartController extends HttpServlet {
         Product chosenProduct = productDataStore.find(id);
 
         Cart cart = (Cart) httpSession.getAttribute("cart");
-        boolean contains = false;
+        boolean contains = true;
 
         for (LineItem lineItem : cart.productsInCart) {
             if (lineItem.getProduct() == chosenProduct) {
-                contains = true;
-                lineItem.setQuantity(lineItem.getQuantity()+1);
+                contains = false;
+                cart.removeFromCart(lineItem);
             }
         }
-        if (!contains) {
-            LineItem chosen = new LineItem(chosenProduct, 1);
-            cart.addToCart(chosen);
-        }
 
 
-        resp.sendRedirect("/");
+        resp.sendRedirect("/shopping-cart");
 
     }
 }

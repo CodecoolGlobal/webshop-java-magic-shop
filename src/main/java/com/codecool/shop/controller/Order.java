@@ -15,7 +15,7 @@ public class Order {
     public Order(ArrayList<LineItem> itemList) {
         this.itemList = itemList;
         for (LineItem item : itemList) {
-            sum += item.addUpPrice;
+            sum += item.getAddUpPrice();
         }
     }
 }
