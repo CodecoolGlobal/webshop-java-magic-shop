@@ -32,6 +32,7 @@ public class RemoveFromCart extends HttpServlet {
             if (cart.productsInCart.get(i).getProduct() == chosenProduct) {
                 contains = false;
                 cart.removeFromCart(cart.productsInCart.get(i));
+                cart.sumOfCart -= chosenProduct.getDefaultPrice();
             }
         }
 
