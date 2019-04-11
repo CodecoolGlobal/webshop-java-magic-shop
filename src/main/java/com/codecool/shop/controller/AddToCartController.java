@@ -25,8 +25,7 @@ public class AddToCartController extends HttpServlet {
         int id = Integer.parseInt(req.getParameter("cartButton"));
         Product chosenProduct = productDataStore.find(id);
 
-        Cart cart = Cart.getInstance();
-        httpSession.setAttribute("cart", cart);
+        Cart cart = (Cart) httpSession.getAttribute("cart");
         boolean contains = false;
 
         for (LineItem lineItem : cart.productsInCart) {
