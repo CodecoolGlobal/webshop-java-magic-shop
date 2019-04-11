@@ -104,12 +104,8 @@ img {
     min-height: 280px;
 }
 
-.image-container {
-    min-height: 280px;
-}
-
 .card-header {
-    min-height: 150px;
+    min-height: 160px;
 }
 
 .col {

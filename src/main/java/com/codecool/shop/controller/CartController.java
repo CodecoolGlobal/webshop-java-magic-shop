@@ -20,14 +20,10 @@ public class CartController extends HttpServlet {
         HttpSession httpSession = req.getSession();
         Cart currentCart = (Cart) httpSession.getAttribute("cart");
 
-        if (currentCart != null) {
-            TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
-            WebContext context = new WebContext(req, resp, req.getServletContext());
-            context.setVariable("products", currentCart.getProductsInCart());
-            engine.process("product/shopping-cart.html", context, resp.getWriter());
-        } else {
-            resp.sendRedirect("/");
-        }
+        TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
+        WebContext context = new WebContext(req, resp, req.getServletContext());
+        context.setVariable("products", currentCart.getProductsInCart());
+        engine.process("product/shopping-cart.html", context, resp.getWriter());
     }
 }
 
