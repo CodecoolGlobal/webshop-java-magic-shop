@@ -34,11 +34,13 @@ public class AddToCartController extends HttpServlet {
                     contains = true;
                     lineItem.quantity++;
                     lineItem.setAddUpPrice(lineItem.quantity);
+                    cart.setItemsTotal(1);
                 }
             }
             if (!contains) {
                 LineItem chosen = new LineItem(chosenProduct, 1);
                 cart.addToCart(chosen);
+                cart.setItemsTotal(1);
             }
         }
 
