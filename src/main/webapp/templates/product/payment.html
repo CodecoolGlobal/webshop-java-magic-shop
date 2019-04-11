@@ -37,7 +37,12 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Shopping Cart</h1>
+    <a href="/"><img src="/static/img/homepage.png" id="home-page-button"></a>
+    <div><a href="/checkout"><img src="/static/img/checkout.png" id="checkout-button"></a></div>
+    <a href="/checkout">
+        <div th:text="Checkout" id="cart-total"></div>
+    </a>
+    <h1>Payment</h1>
 </div>
 <div class="text-wrapper">
     <div class="container">

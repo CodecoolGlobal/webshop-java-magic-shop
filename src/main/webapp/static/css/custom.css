@@ -112,6 +112,29 @@ h1 {
     width: 485px;
 }
 
+.checkout-card {
+    padding: 5%;
+    font-size: 25px;
+    margin: 2%;
+}
+
+.checkout-card input {
+    margin: 2%;
+    margin-left: 38%;
+    width: 70%;
+    font-family: "Century Schoolbook L";
+}
+
+.order-card {
+    width: 120%;
+    font-size: 25px;
+}
+
+#cart-sum {
+    text-align: right;
+    font-weight: bold;
+}
+
 .card-header {
     min-height: 210px;
     font-size: 1.5rem;

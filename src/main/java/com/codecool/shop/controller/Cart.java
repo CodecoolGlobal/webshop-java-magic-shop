@@ -38,7 +38,9 @@ public class Cart {
     }
 
     public void addToCart(LineItem item) {
-            productsInCart.add(item);
+
+        productsInCart.add(item);
+        sumOfCart += item.getProduct().getDefaultPrice();
     }
 
     public void removeFromCart(LineItem item){

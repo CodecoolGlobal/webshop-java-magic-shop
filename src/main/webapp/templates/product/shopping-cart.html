@@ -47,8 +47,8 @@
 <div class="text-wrapper">
 
     <div id="products" class="row">
-        <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
-            <div class="card product-card">
+        <div class="col col-sm-12 col-md-6 col-lg-4 product-card" th:each="prod,iterStat : ${products}">
+            <div class="card">
                 <div class="image-container"><img class="product-img" src="http://placehold.it/400x250/000/fff"
                                                   th:attr="src='/static/img/product_' + ${prod.getProduct().getId()} + '.jpg'"
                                                   alt=""/></div>
