@@ -4,6 +4,7 @@ import com.codecool.shop.model.Product;
 
 public class LineItem {
 
+    private float price;
     private Product product;
     private int quantity;
     private float addUpPrice;
@@ -11,7 +12,7 @@ public class LineItem {
     public LineItem(Product product, int quantity) {
         this.product = product;
         this.quantity = quantity;
-        this.addUpPrice = product.getDefaultPrice()*quantity;
+        this.price = product.getDefaultPrice();
     }
 
     public Product getProduct() {
@@ -19,11 +20,19 @@ public class LineItem {
     }
 
     public float getAddUpPrice() {
-        return addUpPrice;
+        if (this.quantity == 1) {
+            return price;
+        } else {
+            return addUpPrice;
+        }
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public void setAddUpPrice(int quantity) {
+        this.addUpPrice = price * quantity;
     }
 
     public int getQuantity() {
