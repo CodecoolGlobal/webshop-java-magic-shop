@@ -46,24 +46,6 @@
 </div>
 <div class="text-wrapper">
 
-        <div id="products" class="row">
-            <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
-                <div class="card">
-                    <div class="image-container"><img class="product-img" src="http://placehold.it/400x250/000/fff"
-                                                      th:attr="src='/static/img/product_' + ${prod.getProduct().getId()} + '.jpg'"
-                                                      alt=""/></div>
-                    <div class="card-header">
-                        <h4 class="card-title" th:text="${prod.getProduct().getName()}">Product name</h4>
-                        <p class="card-text" th:text="${prod.getProduct().getDescription()}">Product description... </p>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-text">
-                            <p class="lead" th:text="${prod.getAddUpPrice()}">100 USD</p><span>Quantity: </span>
-                            <p class="lead" th:text="${prod.getQuantity()}"></p>
-                        </div>
-                        <div class="card-text">
-                            <a class="btn btn-success" href="/cart/remove">Remove from Cart</a>
-                        </div>
     <div id="products" class="row">
         <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
             <div class="card product-card">
@@ -86,6 +68,7 @@
             </div>
         </div>
     </div>
+
 
     <div th:replace="footer.html :: copy"></div>
 </div>
