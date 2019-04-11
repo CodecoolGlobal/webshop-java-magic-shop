@@ -45,32 +45,40 @@
     <h1>Payment</h1>
 </div>
 <div class="text-wrapper">
-    <div class="container">
-
-        <div id="products" class="row">
-            <div class="col col-sm-12 col-md-6 col-lg-4" th:each="prod,iterStat : ${products}">
-                <div class="card">
-                    <div class="image-container"><img class="" src="http://placehold.it/400x250/000/fff"
-                                                      th:attr="src='/static/img/product_' + ${prod.getProduct().getId()} + '.jpg'"
-                                                      alt=""/></div>
-                    <div class="card-header">
-                        <h4 class="card-title" th:text="${prod.getProduct().getName()}">Product name</h4>
-                        <p class="card-text" th:text="${prod.getProduct().getDescription()}">Product description... </p>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-text">
-                            <p class="lead" th:text="${prod.getProduct().getPrice()}">100 USD</p>
-                        </div>
-                        <div class="card-text">
-                            <a class="btn btn-success" href="#">Remove from Cart</a>
-                        </div>
+    <div class="row" id="payments">
+        <div class="col col-sm-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="image-container"><img class="product-img coin-img" src="http://placehold.it/400x250/000/fff"
+                                                  th:attr="src='/static/img/checkout.png'"
+                                                  alt=""/></div>
+                <div class="card-header">
+                    <a class="btn btn-success btn-payment" href="/">Pay with Golden Coin</a>
+                </div>
+            </div>
+        </div>
+        <div class="col col-sm-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="image-container"><img class="product-img" src="http://placehold.it/400x250/000/fff"
+                                                  th:attr="src='/static/img/creditcard.jpeg'"
+                                                  alt=""/></div>
+                <div class="card-header">
+                    <div class="card-text">
+                        <a class="btn btn-success btn-payment" href="/">Pay with Card</a>
                     </div>
                 </div>
             </div>
         </div>
-
+        <div class="col col-sm-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="image-container"><img class="product-img craft-img" src="http://placehold.it/400x250/000/fff"
+                                                  th:attr="src='/static/img/crafts.jpg'"
+                                                  alt=""/></div>
+                <div class="card-header">
+                    <a class="btn btn-success btn-payment" href="/">Pay with Crafts</a>
+                </div>
+            </div>
+        </div>
     </div>
-
     <div th:replace="footer.html :: copy"></div>
 </div>
 </body>

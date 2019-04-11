@@ -225,3 +225,16 @@ h1 {
 #quantity {
     max-width: 10%;
 }
+
+#payments {
+    padding: auto;
+}
+
+.btn-payment {
+    width: 100%;
+    font-size: 30px;
+}
+
+.coin-img, .craft-img {
+    padding-top: 10%;
+}
