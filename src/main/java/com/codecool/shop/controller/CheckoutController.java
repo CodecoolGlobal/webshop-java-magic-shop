@@ -21,22 +21,29 @@ public class CheckoutController extends HttpServlet {
 
         HttpSession httpSession = req.getSession();
         Cart currentCart = (Cart) httpSession.getAttribute("cart");
-        Order currentOrder = new Order(currentCart.productsInCart);
-        httpSession.setAttribute("order", currentOrder);
+        Order currentOrder;
+        if (httpSession.getAttribute("order") == null) {
+            currentOrder = new Order(currentCart.productsInCart);
+            httpSession.setAttribute("order", currentOrder);
+        } else {
+             currentOrder =(Order) httpSession.getAttribute("order");
+        }
 
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("cartSum", currentCart.sumOfCart);
         context.setVariable("cartTotal", currentCart.getItemsTotal());
         context.setVariable("order", currentOrder.getItemList());
+        context.setVariable("currentOrder", currentOrder);
         engine.process("product/checkout.html", context, resp.getWriter());
 
     }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
-        Order currentOrder =(Order) httpSession.getAttribute("order");
-        currentOrder.saveData(req.getParameter("billing"),req.getParameter("shipping"),req.getParameter("phone"),req.getParameter("name"),req.getParameter("email"));
+        Order currentOrder = (Order) httpSession.getAttribute("order");
+        currentOrder.saveData(req.getParameter("billing"), req.getParameter("shipping"), req.getParameter("phone"), req.getParameter("name"), req.getParameter("email"));
         resp.sendRedirect("/payment");
 
     }
