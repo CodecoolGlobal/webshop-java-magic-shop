@@ -29,6 +29,7 @@ public class LineItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+        setAddUpPrice(quantity);
     }
 
     public void setAddUpPrice(int quantity) {
