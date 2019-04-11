@@ -42,9 +42,11 @@ public class AddToCartController extends HttpServlet {
                 cart.addToCart(chosen);
                 cart.setItemsTotal(1);
             }
-
-            resp.sendRedirect("/");
-
         }
+    if (httpSession.getAttribute("lasturl") != null) {
+        resp.sendRedirect(httpSession.getAttribute("lasturl").toString());
+    } else {
+        resp.sendRedirect("/");
+    }
     }
 }

@@ -35,7 +35,7 @@ public class Initializer implements ServletContextListener {
         supplierDataStore.add(consortium);
 
         //setting up a new product category
-        ProductCategory spell = new ProductCategory("Spell", "Sorcery", "An invocation of magic, or a curse, that may help the caster in various ways. ");
+        ProductCategory spell = new ProductCategory("Spells", "Sorcery", "An invocation of magic, or a curse, that may help the caster in various ways. ");
         ProductCategory potion = new ProductCategory("Potions", "Alchemy", "A finely brewed liquid that may be a remedy, or provide some form of enhancement of the mind or body.");
         ProductCategory poison = new ProductCategory("Poisons", "Alchemy", "A vile liquid that affects its victim's health, it may be deadly, or paralyzing, or any other form of malice.");
         ProductCategory book = new ProductCategory("Books", "Sorcery", "A document of wizardry, describing either a spell, curse, recipe, or anything related to magic.");

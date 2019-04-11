@@ -39,5 +39,15 @@ public class LineItem {
         return quantity;
     }
 
-}
+    public void setAddUpPrice(int quantity) {
+        this.addUpPrice = price * quantity;
+    }
 
+    public float getAddUpPrice() {
+        if (this.quantity == 1) {
+            return price;
+        } else {
+            return addUpPrice;
+        }
+    }
+}

@@ -34,6 +34,7 @@ public class ProductController extends HttpServlet {
         Cart sessionCart = Cart.getInstance();
         session.setAttribute("cart", sessionCart);
 
+
 //        Map params = new HashMap<>();
 //        params.put("category", productCategoryDataStore.find(1));
 //        params.put("products", productDataStore.getBy(productCategoryDataStore.find(1)));
@@ -42,11 +43,16 @@ public class ProductController extends HttpServlet {
         WebContext context = new WebContext(req, resp, req.getServletContext());
         int categoryId = 1;
         int supplierId = 0;
-        if (req.getParameter("category") != null) categoryId = Integer.parseInt(req.getParameter("category"));
+        if (req.getParameter("category") != null) {
+            categoryId = Integer.parseInt(req.getParameter("category"));
+            session.setAttribute("lasturl","/?category="+req.getParameter("category"));
+        }
 //        context.setVariables(params);
         context.setVariable("cartTotal", sessionCart.getItemsTotal());
         if (req.getParameter("supplier") != null) {
             supplierId = Integer.parseInt(req.getParameter("supplier"));
+            session.setAttribute("lasturl","/?supplier="+req.getParameter("supplier"));
+
             categoryId = 0;
         }
         if (categoryId != 0) {
