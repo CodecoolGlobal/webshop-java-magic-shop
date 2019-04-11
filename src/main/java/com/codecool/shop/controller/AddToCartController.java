@@ -19,13 +19,14 @@ public class AddToCartController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        HttpSession httpSession = req.getSession();
         ProductDao productDataStore = ProductDaoMem.getInstance();
 
         int id = Integer.parseInt(req.getParameter("cartButton"));
         Product chosenProduct = productDataStore.find(id);
 
-        Cart cart = (Cart) getServletContext().getAttribute("cart");
-
+        Cart cart = Cart.getInstance();
+        httpSession.setAttribute("cart", cart);
         boolean contains = false;
 
         for (LineItem lineItem : cart.productsInCart) {
