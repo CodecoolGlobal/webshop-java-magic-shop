@@ -59,7 +59,10 @@
                 <div class="card-body">
                     <div class="card-text">
                         <span class="lead" th:text="${prod.getAddUpPrice()}+ ' USD'">100 USD</span><br>
-                        <p class="lead" th:text="'Quantity: ' + ${prod.getQuantity()}"></p>
+                        <form action='/cart/edit' method='post'>
+                            <label for="quantity" class="lead">Quantity: </label><input th:type="number" id="quantity" name="quantity" th:value="${prod.getQuantity()}">
+                            <button class="btn btn-success" type="submit" name="cartButton" th:value="${prod.getProduct().id}">Save Quantity</button>
+                        </form>
                     </div>
                     <div class="card-text">
                         <form action='/cart/remove' method='post'>
@@ -68,6 +71,8 @@
                         </form>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
