@@ -40,7 +40,7 @@ public class AddToCartController extends HttpServlet {
         }
 
 
-        resp.sendRedirect("/");
+        resp.sendRedirect((String) httpSession.getAttribute("lasturl").toString());
 
     }
 }
