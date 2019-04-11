@@ -33,4 +33,8 @@ public class Cart {
     public void addToCart(LineItem item) {
             productsInCart.add(item);
     }
+
+    public void removeFromCart(LineItem item){
+        productsInCart.remove(item);
+    }
 }
