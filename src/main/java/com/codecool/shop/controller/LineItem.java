@@ -7,7 +7,7 @@ public class LineItem {
     Product product;
     int quantity;
     float price;
-    float addUpPrice = quantity*price;
+    float addUpPrice;
 
     public LineItem(Product product, int quantity) {
         this.product = product;
@@ -24,10 +24,14 @@ public class LineItem {
     }
 
     public void setAddUpPrice(int quantity) {
-        this.addUpPrice = price*quantity;
+        this.addUpPrice = price * quantity;
     }
 
     public float getAddUpPrice() {
-        return addUpPrice;
+        if (this.quantity == 1) {
+            return price;
+        } else {
+            return addUpPrice;
+        }
     }
 }

@@ -37,6 +37,10 @@
 <body>
 
 <div class="jumbotron text-center">
+    <a href="/"><img src="/static/img/homepage.png" id="home-page-button"></a>
+    <div><a href="/send"><img src="/static/img/send.png" id="send-button"></a></div>
+    <a href="/send"><div th:text="'Place Order'" id="cart-total"></div>
+        </a>
     <h1>Shopping Cart</h1>
 </div>
 <div class="text-wrapper">
@@ -70,8 +74,8 @@
                 Phone Number: <input type="text" name="phone"><br>
                 Billing Address: <input type="text" name="billing"><br>
                 Shipping Address: <input type="text" name="shipping"><br>
-            <input type="submit" value="To payment">
-        </form>
+                <input type="submit" value="To payment">
+            </form>
         </div>
 
     </div>

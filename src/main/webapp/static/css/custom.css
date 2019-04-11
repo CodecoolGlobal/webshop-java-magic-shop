@@ -3,6 +3,10 @@ body {
     font-family: 'Allura', cursive;
 }
 
+button {
+    border-radius: 4px;
+}
+
 .text-wrapper {
     padding-left: 10%;
     padding-right: 10%;
@@ -104,15 +108,20 @@ h1 {
     min-height: 280px;
 }
 
+.product-card {
+    width: 485px;
+}
+
 .card-header {
-    min-height: 160px;
+    min-height: 210px;
+    font-size: 1.5rem;
 }
 
 .col {
     margin-bottom: 2%;
 }
 
-.dropbtn {
+.dropbtn, .btn-success {
     background-color: darkgrey;
     color: black;
     padding: 8px;
@@ -166,7 +175,7 @@ h1 {
     height: 100px;
 }
 
-#cart-button {
+#cart-button, #checkout-button, #send-button {
     margin: 0;
     float: right;
     height: 100px;
@@ -186,4 +195,6 @@ h1 {
     color: #eeeeee;
     font-weight: bolder;
     font-size: 25px;
+    min-width: 50px;
+    height: 50px;
 }
