@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/checkout"})
-public class CheckoutController extends HttpServlet {
+@WebServlet(urlPatterns = {"/payment"})
+public class PaymentController extends HttpServlet {
     private Cart currentCart = Cart.getInstance();
     Order currentOrder = new Order(currentCart.productsInCart);
 
@@ -24,12 +24,10 @@ public class CheckoutController extends HttpServlet {
         TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
         WebContext context = new WebContext(req, resp, req.getServletContext());
         context.setVariable("order", currentOrder);
-        engine.process("product/checkout.html", context, resp.getWriter());
+        engine.process("product/payment.html", context, resp.getWriter());
     }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        currentOrder.saveData(req.getParameter("billing"),req.getParameter("shipping"),req.getParameter("phone"),req.getParameter("name"),req.getParameter("email"));
-        resp.sendRedirect("/payment");
 
     }
 }
