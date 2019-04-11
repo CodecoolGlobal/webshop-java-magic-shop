@@ -17,16 +17,13 @@ public class CartController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        Cart currentCart = (Cart) getServletContext().getAttribute("cart");
+        HttpSession httpSession = req.getSession();
+        Cart currentCart = (Cart) httpSession.getAttribute("cart");
 
-        if (currentCart != null) {
-            TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
-            WebContext context = new WebContext(req, resp, req.getServletContext());
-            context.setVariable("products", currentCart.getProductsInCart());
-            engine.process("product/shopping-cart.html", context, resp.getWriter());
-        } else {
-            resp.sendRedirect("/");
-        }
+        TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
+        WebContext context = new WebContext(req, resp, req.getServletContext());
+        context.setVariable("products", currentCart.getProductsInCart());
+        engine.process("product/shopping-cart.html", context, resp.getWriter());
     }
 }
 
