@@ -37,10 +37,19 @@ public class Cart {
         this.itemsTotal += increase;
     }
 
+    public void recalculateItemsTotal() {
+        int tempTotal = 0;
+        for (LineItem item : getProductsInCart()) {
+            tempTotal += item.getQuantity();
+        }
+        itemsTotal = tempTotal;
+    }
+
     public void addToCart(LineItem item) {
 
         productsInCart.add(item);
         sumOfCart += item.getProduct().getDefaultPrice();
+        itemsTotal += item.getQuantity();
     }
 
     public void removeFromCart(LineItem item){

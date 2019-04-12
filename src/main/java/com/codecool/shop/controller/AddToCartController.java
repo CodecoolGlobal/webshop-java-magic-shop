@@ -40,7 +40,6 @@ public class AddToCartController extends HttpServlet {
             if (!contains) {
                 LineItem chosen = new LineItem(chosenProduct, 1);
                 cart.addToCart(chosen);
-                cart.setItemsTotal(1);
             }
         }
     if (httpSession.getAttribute("lasturl") != null) {

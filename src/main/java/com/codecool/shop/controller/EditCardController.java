@@ -32,6 +32,7 @@ public class EditCardController extends HttpServlet {
                 cart.productsInCart.get(i).setQuantity(Integer.parseInt(req.getParameter("quantity")));
             }
         }
+        cart.recalculateItemsTotal();
 
 
         resp.sendRedirect("/shopping-cart");
