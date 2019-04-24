@@ -40,43 +40,17 @@
 
 <div class="jumbotron text-center">
     <a href="/"><img src="/static/img/homepage.png" id="home-page-button"></a>
-    <div><a href="/confirmation"><img src="/static/img/send.png" id="checkout-button"></a></div>
-    <a href="/confirmation">
-        <div th:text="'Place Order'" id="cart-total"></div>
-    </a>
-    <h1>Payment</h1>
+
+    <h1>Confirmation</h1>
 </div>
 <div class="text-wrapper">
-    <div class="row" id="payments">
-        <div class="col col-sm-12 col-md-6 col-lg-4">
-            <div class="card">
-                <div class="image-container"><img class="product-img coin-img" src="http://placehold.it/400x250/000/fff"
-                                                  th:attr="src='/static/img/checkout.png'"
-                                                  alt=""/></div>
+    <div class="row" id="message">
+
+        <div class="card">
+            <div class="image-container">
                 <div class="card-header">
-                    <a class="btn btn-success btn-payment" href="/payment?method=coin">Pay with Golden Coin</a>
-                </div>
-            </div>
-        </div>
-        <div class="col col-sm-12 col-md-6 col-lg-4">
-            <div class="card">
-                <div class="image-container"><img class="product-img" src="http://placehold.it/400x250/000/fff"
-                                                  th:attr="src='/static/img/creditcard.jpeg'"
-                                                  alt=""/></div>
-                <div class="card-header">
-                    <div class="card-text">
-                        <a class="btn btn-success btn-payment" href="/payment?method=card">Pay with Card</a>
+                    <div class="card-text" th:text="'Thank you for Your purchase!'">
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col col-sm-12 col-md-6 col-lg-4">
-            <div class="card">
-                <div class="image-container"><img class="product-img craft-img" src="http://placehold.it/400x250/000/fff"
-                                                  th:attr="src='/static/img/crafts.jpg'"
-                                                  alt=""/></div>
-                <div class="card-header">
-                    <a class="btn btn-success btn-payment" href="/payment?method=crafts">Pay with Crafts</a>
                 </div>
             </div>
         </div>

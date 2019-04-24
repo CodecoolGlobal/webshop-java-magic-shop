@@ -1,10 +1,17 @@
 body {
     background-image: url("/static/img/background.jpg");
-    font-family: 'Allura', cursive;
+    /*font-family: 'Allura', cursive; */
+    font-family: 'Marck Script', cursive;
+    /* font-family: 'Itim', cursive;*/
 }
 
 button {
     border-radius: 4px;
+}
+
+h4 {
+    font-size: x-large;
+    font-weight: bold
 }
 
 .text-wrapper {
@@ -226,7 +233,7 @@ h1 {
     max-width: 10%;
 }
 
-#payments {
+#payments, #confirmation {
     padding: auto;
 }
 
@@ -237,4 +244,22 @@ h1 {
 
 .coin-img, .craft-img {
     padding-top: 10%;
+}
+
+#message {
+    text-align: center;
+}
+
+#message .card {
+    position: center;
+    margin: auto;
+    padding: 5%;
+}
+
+#message.row {
+    margin: auto;
+}
+
+#message .card-text {
+    font-size: 3rem;
 }

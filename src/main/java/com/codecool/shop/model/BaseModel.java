@@ -1,13 +1,19 @@
 package com.codecool.shop.model;
 
 
+import com.codecool.shop.controller.LineItem;
+
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 
 public class BaseModel {
 
     protected int id;
     protected String name;
     protected String description;
+
+    public BaseModel() {
+    }
 
     public BaseModel(String name) {
         this.name = name;
