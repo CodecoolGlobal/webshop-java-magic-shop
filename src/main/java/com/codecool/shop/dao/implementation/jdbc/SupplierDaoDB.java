@@ -66,6 +66,18 @@ public class SupplierDaoDB implements SupplierDao {
     }
 
     @Override
+    public void removeAll() {
+        try (
+                Connection conn = dBconfig.getConnection();
+                PreparedStatement stmt = conn.prepareStatement("DELETE FROM supplier")
+        ) {
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("sqlerror" + e);
+        }
+    }
+
+    @Override
     public void remove(int id) {
         try (
                 Connection conn = dBconfig.getConnection();

@@ -159,6 +159,18 @@ public class ProductDaoDB implements ProductDao {
         return resultList;
     }
 
+    @Override
+    public void removeAll() {
+        try (
+                Connection conn = dBconfig.getConnection();
+                PreparedStatement stmt = conn.prepareStatement("DELETE FROM product")
+        ) {
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("sqlerror" + e);
+        }
+    }
+
     private Product getProduct(ResultSet resultSet) throws SQLException {
         return new Product(
                 resultSet.getInt("id"),
@@ -169,4 +181,5 @@ public class ProductDaoDB implements ProductDao {
                 productCategoryDao.find(resultSet.getInt("categoryid")),
                 supplierDao.find(resultSet.getInt("supplierid")));
     }
+
 }

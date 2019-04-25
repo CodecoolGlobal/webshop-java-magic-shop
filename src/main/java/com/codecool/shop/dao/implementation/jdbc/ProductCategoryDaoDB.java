@@ -78,6 +78,18 @@ public class ProductCategoryDaoDB implements ProductCategoryDao {
             System.out.println("sqlerror" + e);
         }
     }
+    @Override
+    public void removeAll() {
+        try (
+                Connection conn = dBconfig.getConnection();
+                PreparedStatement stmt = conn.prepareStatement("DELETE FROM productcategory")
+        ) {
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("sqlerror" + e);
+        }
+    }
+
 
     @Override
     public List<ProductCategory> getAll() {
