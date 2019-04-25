@@ -24,4 +24,4 @@ window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
         hideDropdowns();
     }
-}
+};
