@@ -1,15 +1,21 @@
 package com.codecool.shop.dao.implementation.jdbc;
 
+
+import com.codecool.shop.dao.ProductCategoryDao;
 import com.codecool.shop.dao.SupplierDao;
+import com.codecool.shop.model.ProductCategory;
 import com.codecool.shop.model.Supplier;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SupplierDaoDB implements SupplierDao {
 
-    private List<Supplier> data = new ArrayList<>();
     private static SupplierDaoDB instance = null;
+    private DBconfig dBconfig = DBconfig.getInstance();
 
     /* A private Constructor prevents any other class from instantiating.
      */
@@ -25,22 +31,71 @@ public class SupplierDaoDB implements SupplierDao {
 
     @Override
     public void add(Supplier supplier) {
-        supplier.setId(data.size() + 1);
-        data.add(supplier);
+
+        try (
+                Connection conn = dBconfig.getConnection();
+                PreparedStatement stmt = conn.prepareStatement("INSERT INTO supplier (name,description) values (?, ?)")
+        ) {
+            stmt.setString(1, supplier.getName());
+            stmt.setString(2, supplier.getDescription());
+
+            stmt.executeUpdate();
+        }
+        catch (Exception e) {
+            System.out.println("sqlerror" + e);
+        }
     }
 
     @Override
     public Supplier find(int id) {
-        return data.stream().filter(t -> t.getId() == id).findFirst().orElse(null);
-    }
+        try (
+                Connection conn = dBconfig.getConnection();
+                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM supplier WHERE id = (?)")
+        ) {
+            stmt.setInt(1, id);
+
+            ResultSet resultSet = stmt.executeQuery();
+            return new Supplier(resultSet.getString("name"),
+                    resultSet.getString("description"));
+
+
+        }
+        catch (Exception e) {
+            System.out.println("sqlerror" + e);
+        }
+        return null;}
 
     @Override
     public void remove(int id) {
-        data.remove(find(id));
+        try (
+                Connection conn = dBconfig.getConnection();
+                PreparedStatement stmt = conn.prepareStatement("DELETE FROM supplier WHERE id = (?)")
+        ) {
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        }
+        catch (Exception e) {
+            System.out.println("sqlerror" + e);
+        }
     }
 
     @Override
     public List<Supplier> getAll() {
-        return data;
-    }
+        List<Supplier> resultList = new ArrayList<>();
+
+        try (
+                Connection conn = dBconfig.getConnection();
+                PreparedStatement stmt = conn.prepareStatement("SELECT * FROM supplier")
+        ) {
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()){
+                Supplier supplier = new Supplier(resultSet.getString("name"),
+                        resultSet.getString("description"));
+                resultList.add(supplier);
+            }
+        }
+        catch (Exception e) {
+            System.out.println("sqlerror" + e);
+        }
+        return resultList;}
 }
