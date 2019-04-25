@@ -44,7 +44,6 @@ class ProductDaoTest {
 
     @Test
     void removeProductTest() {
-        new Product("Test",0.0f, "GBP", "Test", category, supplier);
         productDao.add(new Product("Test",0.0f, "GBP", "Test", category, supplier));
         productDao.add(new Product("Test",0.0f, "GBP", "Test", category, supplier));
         productDao.add(new Product("Test",0.0f, "GBP", "Test", category, supplier));
@@ -66,11 +65,57 @@ class ProductDaoTest {
     }
 
     @Test
-    void getBy() {
+    void getBySupplierTest() {
+
+        Supplier anotherSupplier = new Supplier("Test","Test");
+        int sumOfProducts = 0;
+
+
+        productDao.add(new Product("Test",0.0f, "GBP", "Test", category, supplier));
+        productDao.add(new Product("Test",0.0f, "GBP", "Test", category, supplier));
+        productDao.add(new Product("Test",0.0f, "GBP", "Test", category, supplier));
+
+        productDao.add(new Product("Test",0.0f, "GBP", "Test", category, anotherSupplier));
+        productDao.add(new Product("Test",0.0f, "GBP", "Test", category, anotherSupplier));
+        productDao.add(new Product("Test",0.0f, "GBP", "Test", category, anotherSupplier));
+
+        for (Product product:productDao.getBy(supplier)) {
+            if (product.getSupplier().equals(supplier)) {
+                sumOfProducts += 1;
+            }
+            else {
+                fail();
+            }
+        }
+        assertEquals(sumOfProducts,productDao.getBy(supplier).size());
+
+
+
 
     }
 
     @Test
-    void getBy1() {
+    void getByCategoryTest() {
+        ProductCategory anotherCategory = new ProductCategory("Test","Test","Test");
+        int sumOfProducts = 0;
+
+
+        productDao.add(new Product("Test",0.0f, "GBP", "Test", category, supplier));
+        productDao.add(new Product("Test",0.0f, "GBP", "Test", category, supplier));
+        productDao.add(new Product("Test",0.0f, "GBP", "Test", category, supplier));
+
+        productDao.add(new Product("Test",0.0f, "GBP", "Test", anotherCategory, supplier));
+        productDao.add(new Product("Test",0.0f, "GBP", "Test", anotherCategory, supplier));
+        productDao.add(new Product("Test",0.0f, "GBP", "Test", anotherCategory, supplier));
+
+        for (Product product:productDao.getBy(category)) {
+            if (product.getProductCategory().equals(category)) {
+                sumOfProducts += 1;
+            }
+            else {
+                fail();
+            }
+        }
+        assertEquals(sumOfProducts,productDao.getBy(category).size());
     }
 }
