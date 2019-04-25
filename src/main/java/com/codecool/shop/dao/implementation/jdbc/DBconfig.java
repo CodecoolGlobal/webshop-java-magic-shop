@@ -1,24 +1,30 @@
-package com.codecool.shop.dao.implementation;
+package com.codecool.shop.dao.implementation.jdbc;
 
 import com.codecool.shop.config.ConfigReader;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class DBconfig {
-    private static DBconfig instance  = new DBconfig();
+    private static DBconfig instance = new DBconfig();
     private String db_name;
     private String username;
     private String password;
     private String URL;
-    private DBconfig(){
+
+    private DBconfig() {
 
     }
 
-    public void setupConfig(String filepath){
+    public void setupConfig(String filepath) {
         ConfigReader configReader = new ConfigReader(filepath);
         this.setUsername(configReader.getUsername());
         this.setPassword(configReader.getUserPassword());
         this.setDb_name(configReader.getDatabasename());
         this.setURL(configReader.getURL());
     }
+
     public static DBconfig getInstance() {
         return instance;
     }
@@ -53,5 +59,12 @@ public class DBconfig {
 
     public String getDb_name() {
         return db_name;
+    }
+
+    public Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(
+                URL,
+                username,
+                password);
     }
 }
