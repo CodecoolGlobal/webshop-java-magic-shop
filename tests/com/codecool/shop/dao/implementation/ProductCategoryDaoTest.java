@@ -19,9 +19,9 @@ class ProductCategoryDaoTest {
 
     @Test
     void removeAllProductCategoryTest() {
-        productCategoryDao.add(new ProductCategory("test", "testDepo", "This is a test category"));
-        productCategoryDao.add(new ProductCategory("test", "testDepo", "This is a test category"));
-        productCategoryDao.add(new ProductCategory("test", "testDepo", "This is a test category"));
+        productCategoryDao.add(new ProductCategory(1,"test", "testDepo", "This is a test category"));
+        productCategoryDao.add(new ProductCategory(2,"test", "testDepo", "This is a test category"));
+        productCategoryDao.add(new ProductCategory(3,"test", "testDepo", "This is a test category"));
 
         productCategoryDao.removeAll();
 
@@ -30,7 +30,7 @@ class ProductCategoryDaoTest {
 
     @Test
     void addProductCategoryTest() {
-        ProductCategory category = new ProductCategory("test", "testDepo", "This is a test category");
+        ProductCategory category = new ProductCategory(1,"test", "testDepo", "This is a test category");
 
         int sizeBeforeAdd = productCategoryDao.getAll().size();
         productCategoryDao.add(category);
@@ -45,7 +45,7 @@ class ProductCategoryDaoTest {
 
         assertNull(productCategoryDao.find(1));
 
-        productCategoryDao.add(new ProductCategory("test", "testDepo", "This is a test category"));
+        productCategoryDao.add(new ProductCategory(1,"test", "testDepo", "This is a test category"));
 
         assertNotNull(productCategoryDao.find(1));
         assertEquals(productCategoryDao.find(1).getId(), 1);
@@ -54,9 +54,9 @@ class ProductCategoryDaoTest {
 
     @Test
     void removeProductCategoryTest() {
-        productCategoryDao.add(new ProductCategory("test", "testDepo", "This is a test category"));
-        productCategoryDao.add(new ProductCategory("test", "testDepo", "This is a test category"));
-        productCategoryDao.add(new ProductCategory("test", "testDepo", "This is a test category"));
+        productCategoryDao.add(new ProductCategory(1,"test", "testDepo", "This is a test category"));
+        productCategoryDao.add(new ProductCategory(2,"test", "testDepo", "This is a test category"));
+        productCategoryDao.add(new ProductCategory(3,"test", "testDepo", "This is a test category"));
 
         int sizeBeforeRemove = productCategoryDao.getAll().size();
         productCategoryDao.remove(1);
