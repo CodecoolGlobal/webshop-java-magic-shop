@@ -1,8 +1,10 @@
-package com.codecool.shop.controller;
+package com.codecool.shop.model;
+
+import com.codecool.shop.controller.LineItem;
 
 import java.util.ArrayList;
 
-public class Order {
+public class Order extends BaseModel{
 
     private ArrayList<LineItem> itemList;
     private int sum = 0;
@@ -14,13 +16,15 @@ public class Order {
     private String method;
     private String card_num;
 
+
     public Order(ArrayList<LineItem> itemList) {
         this.itemList = itemList;
         for (LineItem item : itemList) {
             sum += item.getAddUpPrice();
         }
     }
-    public ArrayList<LineItem> getItemList(){
+
+    public ArrayList<LineItem> getItemList() {
         return itemList;
     }
 
@@ -28,7 +32,7 @@ public class Order {
         this.method = method;
     }
 
-    public void setCard_num(String card_num) {
+    public void paymentMethod(String card_num) {
         this.card_num = card_num;
     }
 
@@ -40,7 +44,7 @@ public class Order {
         return email;
     }
 
-    public String getfullName() {
+    public String getFullName() {
         return name;
     }
 
@@ -59,4 +63,5 @@ public class Order {
         this.name = name;
         this.email = email;
     }
+
 }

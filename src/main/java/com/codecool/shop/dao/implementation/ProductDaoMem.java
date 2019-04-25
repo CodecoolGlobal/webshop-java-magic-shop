@@ -49,6 +49,11 @@ public class ProductDaoMem implements ProductDao {
     }
 
     @Override
+    public void removeAll() {
+        data.clear();
+    }
+
+    @Override
     public List<Product> getBy(Supplier supplier) {
         return data.stream().filter(t -> t.getSupplier().equals(supplier)).collect(Collectors.toList());
     }

@@ -29,6 +29,8 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Allura" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Itim" rel="stylesheet">
 
     <script src="/static/js/index.js" defer></script>
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css"/>
@@ -77,7 +79,7 @@
                                                   th:attr="src='/static/img/product_' + ${prod.id} + '.jpg'" alt=""/>
                 </div>
                 <div class="card-header">
-                    <h4 style="font-size: x-large; font-weight: bold" class="card-title" th:text="${prod.name}">Product name</h4>
+                    <h4 class="card-title" th:text="${prod.name}">Product name</h4>
                     <p class="card-text" th:text="${prod.description}">Product description... </p>
                 </div>
                 <div class="card-body">
