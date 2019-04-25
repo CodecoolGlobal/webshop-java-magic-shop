@@ -2,6 +2,7 @@ package com.codecool.shop.controller;
 
 import com.codecool.shop.dao.ProductDao;
 import com.codecool.shop.dao.implementation.ProductDaoMem;
+import com.codecool.shop.dao.implementation.jdbc.ProductDaoDB;
 import com.codecool.shop.model.Product;
 
 import javax.servlet.ServletException;
@@ -20,17 +21,15 @@ public class RemoveFromCart extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession httpSession = req.getSession();
-        ProductDao productDataStore = ProductDaoMem.getInstance();
+        ProductDao productDataStore = ProductDaoDB.getInstance();
 
         int id = Integer.parseInt(req.getParameter("cartButton"));
         Product chosenProduct = productDataStore.find(id);
 
         Cart cart = (Cart) httpSession.getAttribute("cart");
-        boolean contains = true;
 
         for (int i=0; i< cart.productsInCart.size(); i++) {
-            if (cart.productsInCart.get(i).getProduct() == chosenProduct) {
-                contains = false;
+            if (cart.productsInCart.get(i).getProduct().getId() == chosenProduct.getId()) {
                 cart.setItemsTotal(-cart.productsInCart.get(i).getQuantity());
                 cart.sumOfCart -= chosenProduct.getDefaultPrice();
                 cart.removeFromCart(cart.productsInCart.get(i));
