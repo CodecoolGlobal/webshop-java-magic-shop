@@ -39,8 +39,7 @@ public class ProductCategoryDaoDB implements ProductCategoryDao {
             stmt.setString(3, category.getDepartment());
 
             stmt.executeUpdate();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("sqlerror" + e);
         }
     }
@@ -54,16 +53,18 @@ public class ProductCategoryDaoDB implements ProductCategoryDao {
             stmt.setInt(1, id);
 
             ResultSet resultSet = stmt.executeQuery();
-            return new ProductCategory(resultSet.getString("name"),
-                    resultSet.getString("department"),
-                    resultSet.getString("description"));
+            if (resultSet.next()) {
+                return new ProductCategory(resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("department"),
+                        resultSet.getString("description"));
+            }
 
-
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("sqlerror" + e);
         }
-    return null;}
+        return null;
+    }
 
     @Override
     public void remove(int id) {
@@ -73,8 +74,7 @@ public class ProductCategoryDaoDB implements ProductCategoryDao {
         ) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("sqlerror" + e);
         }
     }
@@ -88,14 +88,16 @@ public class ProductCategoryDaoDB implements ProductCategoryDao {
                 PreparedStatement stmt = conn.prepareStatement("SELECT * FROM productcategory")
         ) {
             ResultSet resultSet = stmt.executeQuery();
-            while (resultSet.next()){
-                ProductCategory productCategory = new ProductCategory(resultSet.getString("name"),
-                        resultSet.getString("department"),resultSet.getString("description"));
+            while (resultSet.next()) {
+                ProductCategory productCategory =new ProductCategory(resultSet.getInt("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("department"),
+                        resultSet.getString("description"));
                 resultList.add(productCategory);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("sqlerror" + e);
         }
-    return resultList;}
+        return resultList;
+    }
 }

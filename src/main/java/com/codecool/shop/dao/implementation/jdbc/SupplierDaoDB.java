@@ -9,6 +9,7 @@ import com.codecool.shop.model.Supplier;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,8 +41,7 @@ public class SupplierDaoDB implements SupplierDao {
             stmt.setString(2, supplier.getDescription());
 
             stmt.executeUpdate();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("sqlerror" + e);
         }
     }
@@ -55,15 +55,15 @@ public class SupplierDaoDB implements SupplierDao {
             stmt.setInt(1, id);
 
             ResultSet resultSet = stmt.executeQuery();
-            return new Supplier(resultSet.getString("name"),
-                    resultSet.getString("description"));
+            if (resultSet.next()) {
+                return getSupplier(resultSet);
+            }
 
-
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("sqlerror" + e);
         }
-        return null;}
+        return null;
+    }
 
     @Override
     public void remove(int id) {
@@ -73,8 +73,7 @@ public class SupplierDaoDB implements SupplierDao {
         ) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("sqlerror" + e);
         }
     }
@@ -88,14 +87,19 @@ public class SupplierDaoDB implements SupplierDao {
                 PreparedStatement stmt = conn.prepareStatement("SELECT * FROM supplier")
         ) {
             ResultSet resultSet = stmt.executeQuery();
-            while (resultSet.next()){
-                Supplier supplier = new Supplier(resultSet.getString("name"),
-                        resultSet.getString("description"));
+            while (resultSet.next()) {
+                Supplier supplier = getSupplier(resultSet);
                 resultList.add(supplier);
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("sqlerror" + e);
         }
-        return resultList;}
+        return resultList;
+    }
+
+    private Supplier getSupplier(ResultSet resultSet) throws SQLException {
+        return new Supplier(resultSet.getInt("id"),
+                resultSet.getString("name"),
+                resultSet.getString("description"));
+    }
 }

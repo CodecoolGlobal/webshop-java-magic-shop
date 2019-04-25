@@ -70,13 +70,9 @@ public class ProductDaoDB implements ProductDao {
             stmt.setInt(1, id);
 
             ResultSet resultSet = stmt.executeQuery();
-            return new Product(resultSet.getString("name"),
-                    resultSet.getFloat("defaultprice"),
-                    resultSet.getString("currencystring"),
-                    resultSet.getString("description"),
-                    productCategoryDao.find(resultSet.getInt("categoryid")),
-                    supplierDao.find(resultSet.getInt("supplierid")));
-
+            if (resultSet.next()) {
+                return getProduct(resultSet);
+            }
 
         } catch (Exception e) {
             System.out.println("sqlerror" + e);
@@ -127,6 +123,7 @@ public class ProductDaoDB implements ProductDao {
                         "join supplier on product.supplier = supplier.name" +
                         " where supplier.id = (?)")
         ) {
+            stmt.setInt(1, supplier.getId());
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()) {
                 Product product = getProduct(resultSet);
@@ -149,6 +146,8 @@ public class ProductDaoDB implements ProductDao {
                         "join supplier on product.supplier = supplier.name" +
                         " where productcategory.id = (?)")
         ) {
+            stmt.setInt(1, productCategory.getId());
+
             ResultSet resultSet = stmt.executeQuery();
             while (resultSet.next()) {
                 Product product = getProduct(resultSet);
@@ -161,7 +160,9 @@ public class ProductDaoDB implements ProductDao {
     }
 
     private Product getProduct(ResultSet resultSet) throws SQLException {
-        return new Product(resultSet.getString("name"),
+        return new Product(
+                resultSet.getInt("id"),
+                resultSet.getString("name"),
                 resultSet.getFloat("defaultprice"),
                 resultSet.getString("currencystring"),
                 resultSet.getString("description"),
