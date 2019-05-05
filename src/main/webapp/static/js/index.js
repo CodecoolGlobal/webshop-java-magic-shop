@@ -9,8 +9,8 @@ function supplierDropdown() {
 }
 
 function hideDropdowns() {
-    let dropdowns = document.getElementsByClassName("dropdown-content");
-    let i;
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
     for (i = 0; i < dropdowns.length; i++) {
         var openDropdown = dropdowns[i];
         if (openDropdown.classList.contains('show')) {
@@ -24,4 +24,4 @@ window.onclick = function (event) {
     if (!event.target.matches('.dropbtn')) {
         hideDropdowns();
     }
-};
+}

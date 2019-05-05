@@ -1,17 +1,6 @@
 body {
     background-image: url("/static/img/background.jpg");
-    /*font-family: 'Allura', cursive; */
-    font-family: 'Marck Script', cursive;
-    /* font-family: 'Itim', cursive;*/
-}
-
-button {
-    border-radius: 4px;
-}
-
-h4 {
-    font-size: x-large;
-    font-weight: bold
+    font-family: 'Allura', cursive;
 }
 
 .text-wrapper {
@@ -101,7 +90,7 @@ h1 {
     margin-bottom: 2%;
 }
 
-.product-img {
+img {
     display: block;
     max-width: 230px;
     max-height: 260px;
@@ -115,43 +104,19 @@ h1 {
     min-height: 280px;
 }
 
-.product-card {
-    width: 485px;
-}
-
-.checkout-card {
-    padding: 5%;
-    font-size: 25px;
-    margin: 2%;
-}
-
-.checkout-card input {
-    margin: 2%;
-    margin-left: 38%;
-    width: 70%;
-    font-family: "Century Schoolbook L";
-}
-
-.order-card {
-    width: 120%;
-    font-size: 25px;
-}
-
-#cart-sum {
-    text-align: right;
-    font-weight: bold;
+.image-container {
+    min-height: 280px;
 }
 
 .card-header {
-    min-height: 210px;
-    font-size: 1.5rem;
+    min-height: 150px;
 }
 
 .col {
     margin-bottom: 2%;
 }
 
-.dropbtn, .btn-success {
+.dropbtn {
     background-color: darkgrey;
     color: black;
     padding: 8px;
@@ -197,69 +162,4 @@ h1 {
 
 .show {
     display: block;
-}
-
-#home-page-button {
-    margin: 0;
-    float: left;
-    height: 100px;
-}
-
-#cart-button, #checkout-button, #send-button {
-    margin: 0;
-    float: right;
-    height: 100px;
-    z-index: 0;
-    position: relative;
-}
-
-#cart-total {
-    margin-left: 91%;
-    margin-top: 40px;
-    padding: 10px;
-    z-index: 100;
-    position: absolute;
-    float: right;
-    background-color: rgba(41, 41, 61, 0.6);
-    border-radius: 25px;
-    color: #eeeeee;
-    font-weight: bolder;
-    font-size: 25px;
-    min-width: 50px;
-    height: 50px;
-}
-
-#quantity {
-    max-width: 10%;
-}
-
-#payments, #confirmation {
-    padding: auto;
-}
-
-.btn-payment {
-    width: 100%;
-    font-size: 30px;
-}
-
-.coin-img, .craft-img {
-    padding-top: 10%;
-}
-
-#message {
-    text-align: center;
-}
-
-#message .card {
-    position: center;
-    margin: auto;
-    padding: 5%;
-}
-
-#message.row {
-    margin: auto;
-}
-
-#message .card-text {
-    font-size: 3rem;
 }

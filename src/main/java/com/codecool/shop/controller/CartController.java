@@ -1,6 +1,8 @@
 package com.codecool.shop.controller;
 
 import com.codecool.shop.config.TemplateEngineUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -14,17 +16,25 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/shopping-cart"})
 public class CartController extends HttpServlet {
+
+    private static final Logger logger = LoggerFactory.getLogger(CartController.class);
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession httpSession = req.getSession();
         Cart currentCart = (Cart) httpSession.getAttribute("cart");
 
-        TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
-        WebContext context = new WebContext(req, resp, req.getServletContext());
-        context.setVariable("cartTotal", currentCart.getItemsTotal());
-        context.setVariable("products", currentCart.getProductsInCart());
-        engine.process("product/shopping-cart.html", context, resp.getWriter());
+        if (currentCart != null) {
+            logger.info("Content of cart: " + currentCart.toString());
+            TemplateEngine engine = TemplateEngineUtil.getTemplateEngine(req.getServletContext());
+            WebContext context = new WebContext(req, resp, req.getServletContext());
+            context.setVariable("products", currentCart.getProductsInCart());
+            engine.process("product/shopping-cart.html", context, resp.getWriter());
+        } else {
+            resp.sendRedirect("/");
+        }
     }
 }
+
 

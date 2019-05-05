@@ -55,4 +55,13 @@ public class Cart {
     public void removeFromCart(LineItem item){
         productsInCart.remove(item);
     }
+
+    @Override
+    public String toString() {
+        String cartString = "";
+        for (LineItem item : productsInCart) {
+            cartString += "\nThe quantity of " + item.getProduct().getName() + " in the cart is " + item.getQuantity() + ".\n";
+        }
+        return cartString;
+    }
 }
